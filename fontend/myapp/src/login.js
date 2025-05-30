@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { useState } from 'react';
 
@@ -20,7 +21,13 @@ const Login = ({setMainPage})=>{
     const loginSubFun = (e)=>{
         e.preventDefault();
         
-        //
+        axios.post('http://localhost:5000/user/login',inpFild)
+        .then((resp)=>{
+            alert('login sucsess');
+            localStorage.setItem('jwtoken',JSON.stringify(resp.data));
+            setMainPage('home');
+        })
+        .catch((err)=>alert('Login failed.....'))
         
         setInpFild({
             uname:'',

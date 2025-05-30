@@ -1,5 +1,6 @@
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { useState } from 'react';
+import axios from 'axios';
 
 const Signup = ({setMainPage})=>{
     
@@ -25,7 +26,12 @@ const Signup = ({setMainPage})=>{
     const signupSubFun = (e)=>{
         e.preventDefault();
         
-        //
+        axios.post('http://localhost:5000/user/signup',inpFild)
+        .then(()=>{
+            alert('Register sucsess');
+            setMainPage('login');
+        })
+        .catch((err)=>alert('Ragister failed.....'));
         
         setInpFild({
             uemail:'',
