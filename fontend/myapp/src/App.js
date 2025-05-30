@@ -16,7 +16,7 @@ const App = ()=>{
             case 'home':
                 return <Home setMainPage={setMainPage}/>
             default:
-                return <Signup setMainPage={setMainPage}/>
+                return <Home setMainPage={setMainPage}/>
         }
     }
     
