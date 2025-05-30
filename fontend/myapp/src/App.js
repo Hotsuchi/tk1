@@ -1,12 +1,30 @@
-import { IoHomeOutline } from "react-icons/io5";
+import { useState } from 'react';
+import Login from './login.js';
+import Signup from './signup.js';
+import Home from './home.js';
 
-function App() {
-  return (
-    <div className='bg-slate-800'>
-        Homepage
-        <IoHomeOutline />
-    </div>
-  );
+const App = ()=>{
+    
+    const [ mainPage,setMainPage ] = useState('');
+    
+    const mainPageFun = ()=>{
+        switch (mainPage){
+            case 'login':
+                return <Login setMainPage={setMainPage}/>
+            case 'signup':
+                return <Signup setMainPage={setMainPage}/>
+            case 'home':
+                return <Home setMainPage={setMainPage}/>
+            default:
+                return <Signup setMainPage={setMainPage}/>
+        }
+    }
+    
+    return(
+        <div className='relative'>
+            {mainPageFun()}
+        </div>
+    );
 }
 
 export default App;
